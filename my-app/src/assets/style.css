@@ -1,0 +1,8 @@
+.custom-button {
+  background-color: #00A8A9;
+  color: white;
+  border: none;
+  font-size: 18px; /* Altera o tamanho da fonte */
+  font-family: 'Open Sans', sans-serif; /* Define a fonte como Open Sans */
+  font-weight: 800; /* Define a espessura da fonte para Extrabold */
+}
