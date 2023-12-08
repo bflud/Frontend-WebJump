@@ -8,10 +8,10 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="mb-0 text-center" style={footerStyle}>
+      <footer className="mb-0 text-center " style={footerStyle}>
         <div className="d-flex align-items-center justify-content-center pb-5">
           <div className="col-md-6">
-            <p className="mb-3 mb-md-0">Feito por {"Bruno F "}
+            <p className="mb-3 mb-md-0 mt-4">Desenvolvido por {"Bruno F "}
             
             </p>
             <a className="text-dark fs-4" href="https://github.com/bflud" target="_blank" rel="noreferrer">
