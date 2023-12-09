@@ -1,0 +1,38 @@
+.custom-button {
+  background-color: #00A8A9;
+  color: white;
+  border: none;
+  font-size: 18px; 
+  font-family: 'Open Sans', sans-serif; 
+  font-weight: 800; 
+}
+
+.red{
+  color:#CB0D1F
+}
+
+.list-group {
+  --bs-list-group-border-color: transparent; 
+}
+
+
+@media screen and (max-width: 1199px) {
+  .buttons {
+    display: none;
+  }
+}
+
+.filter{
+  color: #61908C;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+#navbarSupportedContent{
+
+  font-family: "Open Sans - Extrabold";
+  font-size: 17px;
+  font-weight: 600;
+}
