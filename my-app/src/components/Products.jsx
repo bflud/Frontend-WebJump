@@ -146,7 +146,7 @@ const Products = () => {
         hideColor();
         setLoading(false);
       }, 100);
-      
+
       setLoading(false);
     } catch (error) {
       console.error("Erro ao obter os produtos:", error);
@@ -190,7 +190,7 @@ const Products = () => {
         {/* <h2 className="display-5 text-center red">Filtre por:</h2> */}
 
         <div className="buttons text-center py-2">
-          <h4 class="filter">CATEGORIAS</h4>
+          <h4 className="filter">CATEGORIAS</h4>
           <button className="btn btn-outline-dark btn-sm m-2" onClick={fetchAllProducts}>Roupas</button>
           <button className="btn btn-outline-dark btn-sm m-2" onClick={fetchShoesProducts}>Sapatos</button>
           {/* <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterProduct("jewelery")}>Acessórios</button> */}
@@ -205,7 +205,7 @@ const Products = () => {
           <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterProduct("jewelery")}>Social</button>
         </div> */}
         <div className="buttons text-center py-2" id="colorFilter">
-          <h4 class="filter">CORES</h4>
+          <h4 className="filter">CORES</h4>
           {colors.map((color, index) => (
             <button
               key={index}

@@ -25,3 +25,14 @@
 .filter{
   color: #61908C;
 }
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+#navbarSupportedContent{
+
+  font-family: "Open Sans - Extrabold";
+  font-size: 17px;
+  font-weight: 600;
+}
