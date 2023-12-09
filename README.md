@@ -1,114 +1,57 @@
-# Quer ser desenvolvedor frontend na Webjump?
-Criamos este teste para avaliar seus conhecimentos e habilidades frontend (HTML, CSS e JavaScript).
+# E-Commerce Website
 
-## O teste
-O desafio é tornar o layout abaixo em uma página funcional.  
-Não existe certo ou errado, queremos ver como você se sai em situações reais, como este desafio.   
-O tempo necessário para completar o desafio dependerá da sua experiência e ferramentas escolhidas.
+This E-commerce Website is a React.js-based project developed for the WebJump challenge.
 
-Portanto, dê o seu melhor!
+## Demo
 
-:warning: **OBS:** Os layouts podem ser encontrados na pasta **layout** ou através do link: https://xd.adobe.com/view/bcf73053-f8e6-431c-9eb0-bf24304f6fff-e9a4/specs/
+Check out a video demo of the application:
 
-![Layout](assets/preview.jpg)
+Soon*
 
-## Instruções
-- Os arquivos do layout estão no diretório assets deste repositório
-- O conteúdo não é estático. Você deve criar um JavaScript para consultar a lista de categorias a serem exibidas no menu e também para exibir os produtos das categorias.  
-Os dados serão fornecidos por uma API. As instruções estão mais abaixo.
-- Fonte padrão: "Open Sans"
-- Fonte do menu e botão de busca: "Open Sans - Extrabold"
-- As imagens dos produtos estão no diretório public/media
-- Você pode utilizar as tecnologias e bibliotecas que achar melhor (frameworks ou bibliotecas JS / CSS)
-- Crie uma documentação simples comentando sobre as tecnologias e soluções adotadas
-- Se necessário explique também como rodar o seu projeto
+## Overview
 
-## Requisitos
-- Design responsivo nos breakpoints 320px, 768px, 1024px e 1440px
-- Suporte para IE, Chrome, Safari, Firefox
-- Semântica
+This project aims to create a responsive and user-friendly e-commerce platform using React.js. It utilizes several key dependencies and tools for development and testing.
 
-## Diferenciais
-- Uso de pré-processadores CSS (Sass, Less)
-- Acessibilidade
-- SEO
-- Performance
-- Fazer os filtros da sidebar funcionarem através de Javascript
-- Utilizar alguma automatização (Grunt, Gulp, ...)
+## Run Locally
 
-## O que será avaliado
-- Estrutura e organização do código e dos arquivos
-- Soluções adotadas
-- Tecnologias utilizadas
-- Qualidade
-- Fidelidade ao layout
-- Enfim, tudo será observado e levado em conta
+Follow these steps to run the project locally:
 
-## Como iniciar o desenvolvimento
-- Instale o [npm](https://nodejs.org/en/download/)
-- Fork este repositório na sua conta do Bitbucket
-- Crie uma branch com o nome **desafio**
-- Instale as dependências
-```
-npm install
-```
-- Rode a aplicação
-```
-npm start
-```
-- Acesse http://localhost:8888
-- Realize o desenvolvimento na pasta public
+### Clone the repository
 
-## Como enviar seu teste
-- Envie um email para [pessoas@webjump.com.br] com o link do seu repositório
+```bash
+git clone https://github.com/bflud/Frontend-WebJump.git
 
-- Se o seu repositório for privado, solicite os emails das pessoas responsáveis para conceder acesso de leitura ao seu repositório.
 
-## API
-- Categorias: http://localhost:8888/api/V1/categories/list  
-O endpoint de categoria deve ser utilizado para montar o menu do cabeçalho.
+Go to the project directory
 
-**Response**
-```
-{
-  "items": [
-    {
-      "id": 1,
-      "name": "Camisetas",
-      "path": "camisetas"
-    },
-    ...
-  ]
-}
+```bash
+  cd my-app
 ```
 
-- Produtos da Categoria: http://localhost:8888/api/V1/categories/{id}  
-O endpoint de produtos da categoria deve ser consumido para listar os produtos da categoria quando o usuário clicar em um dos menus.
+Install dependencies
 
-**Response**
+```bash
+  npm install
 ```
-{
-  "filters": [
-      {
-          "color": "Cor"
-      }
-  ],
-  "items": [
-    {
-      "id": 31,
-      "sku": "sku-31",
-      "path": "tenis-preto-couro",
-      "name": "Tênis Preto Couro",
-      "image": "media/shoes-1.jpg",
-      "price": 129.9,
-      "specialPrice": 80, //Optional
-      "filter": [
-        {
-          "color": "Preta"
-        }
-      ]
-    },
-    ...
-  ]
-}
+
+Start the server
+
+```bash
+  npm start
 ```
+
+Dependencies
+This project relies on the following major dependencies:
+
+React: ^18.2.0
+React Router Dom: ^6.4.0
+Redux: ^4.2.0 along with React Redux and Redux Toolkit
+Bootstrap: ^5.2.1
+Font Awesome: ^4.7.0
+React Fast Marquee: ^1.3.5
+React Loading Skeleton: ^3.1.0
+Scripts
+npm start: Start the development server
+npm build: Build the production-ready application
+npm test: Run tests
+npm eject: Eject from Create React App's default configurations
