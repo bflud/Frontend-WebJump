@@ -22,7 +22,7 @@ const Products = () => {
   useEffect(() => {
     const getProducts = async () => {
       setLoading(true);
-      const response = await fetch("https://fakestoreapi.com/products/");
+      const response = await fetch("/mock-api/V1/categories/1");
       if (componentMounted) {
         setData(await response.clone().json());
         setFilter(await response.json());
@@ -70,6 +70,7 @@ const Products = () => {
     setFilter(updatedList);
   }
   const ShowProducts = () => {
+  
     return (
       <>
         <div className="buttons text-center py-2">
@@ -105,57 +106,56 @@ const Products = () => {
             {/* Adicione mais opções aqui conforme desejado */}
           </ul>
         </div>
+        
+        
+       
+      
+       {filter.items && filter.items.map((product) => (
+        <div id={product.id} key={product.id} className="col-md-4 col-sm-6 col-xs-8 col-12 mb-4">
+          <div className="card text-center h-100" style={{ border: 'none' }} key={product.id}>
+            <img
+              className="card-img-top p-3"
+              src={product.image}
+              alt="Card"
+              height={300}
+            />
+            <div className="card-body">
+              <h5 className="card-title">
+                {product.name}
+              </h5>
+            </div>
+            <ul className="list-group" style={{ border: 'none' }}>
+              <ul className="list-group" style={{ border: 'none' }}>
+                <li style={{ color: '#1E2B50', fontSize: '27px', fontFamily: 'OpenSans-Extrabold', fontWeight: '900' }} className="list-group-item lead">
+                  {product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                </li>
+              </ul>
+              {/* <li className="list-group-item">Dapibus ac facilisis in</li>
+              <li className="list-group-item">Vestibulum at eros</li> */}
+            </ul>
+            <div className="card-body">
+              <Link
+                to={"/product/" + product.id}
+                className="btn btn-dark m-1"
+                style={{
+                  backgroundColor: '#00A8A9',
+                  color: 'white',
+                  fontSize: '18px',
+                  fontFamily: 'Open Sans, sans-serif',
+                  fontWeight: '800',
+                  border: 'none',
+                  width: '162px',
+                  height: '40px'
+                }}
+              >
+                Comprar
+              </Link>
+            </div>
+          </div>
+        </div>
+      ))}
+      
 
-        {
-          filter.map((product) => {
-            return (
-              <div id={product.id} key={product.id} className="col-md-4 col-sm-6 col-xs-8 col-12 mb-4">
-                <div className="card text-center h-100" style={{ border: 'none' }} key={product.id}>
-                  <img
-                    className="card-img-top p-3"
-                    src={product.image}
-                    alt="Card"
-                    height={300}
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      {product.title.substring(0, 12)}...
-                    </h5>
-
-                  </div>
-                  <ul className="list-group" style={{ border: 'none' }}>
-                    <ul className="list-group" style={{ border: 'none' }}>
-                      <li style={{ color: '#1E2B50', fontSize: '27px', fontFamily: 'OpenSans-Extrabold', fontWeight: '900' }} className="list-group-item lead">
-                        {product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
-                      </li>
-                    </ul>
-                    {/* <li className="list-group-item">Dapibus ac facilisis in</li>
-                    <li className="list-group-item">Vestibulum at eros</li> */}
-                  </ul>
-                  <div className="card-body">
-                    <Link
-                      to={"/product/" + product.id}
-                      className="btn btn-dark m-1"
-                      style={{
-                        backgroundColor: '#00A8A9',
-                        color: 'white',
-                        fontSize: '18px',
-                        fontFamily: 'Open Sans, sans-serif',
-                        fontWeight: '800',
-                        border: 'none',
-                        width: '162px',
-                        height: '40px'
-                      }}
-                    >
-                      Comprar
-                    </Link>
-
-                  </div>
-                </div>
-              </div>
-
-            );
-          })
         }
       </>
     );

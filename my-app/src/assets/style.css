@@ -14,3 +14,10 @@
 .list-group {
   --bs-list-group-border-color: transparent; 
 }
+
+
+@media screen and (max-width: 1199px) {
+  .buttons {
+    display: none;
+  }
+}

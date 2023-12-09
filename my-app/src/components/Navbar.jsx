@@ -33,13 +33,13 @@ const Navbar = () => {
                         </li>
                     </ul>
                     <div className="buttons text-center">
-                    <div className="buttons text-center">
-                        <form className="d-flex">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                        <form className="d-none d-lg-flex justify-content-center">
+                            <input className="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" />
                             <button className="btn btn-danger" type="submit">Buscar</button>
                         </form>
                     </div>
-                    </div>
+
+
                 </div>
 
 
