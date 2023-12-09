@@ -1,9 +1,19 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 
 const Navbar = () => {
     const state = useSelector(state => state.handleCart)
+    const location = useLocation();
+
+
+    const handleClick = event => {
+       const url =event.currentTarget.dataset.to;
+        window.location.href=url;
+
+      };
+
+    
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-white py-3 sticky-top">
             <div className="container">
@@ -20,14 +30,15 @@ const Navbar = () => {
                             <NavLink className="nav-link" to="/">PÁGINA INICIAL </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/product">CAMISETAS</NavLink>
+                            <NavLink className="nav-link" data-to="/product?category=1" onClick={handleClick}>CAMISETAS</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/product">CALÇAS</NavLink>
+                            <NavLink className="nav-link" data-to="/product?category=2" onClick={handleClick}>CALÇAS</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/product">SAPATOS</NavLink>
+                            <NavLink className="nav-link" data-to="/product?category=3" onClick={handleClick}>SAPATOS</NavLink>
                         </li>
+
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/contact">CONTATO</NavLink>
                         </li>
