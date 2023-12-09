@@ -11,10 +11,26 @@ const Products = () => {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState(data);
   const [loading, setLoading] = useState(false);
+  const [currentFilter, setCurrentFilter] = useState(null);
   let componentMounted = true;
   const location = useLocation();
   const dispatch = useDispatch();
+  const [colors, setColors] = useState([]);
+  const colorMap = {
+    'Vermelho': '#CB0D1F',
+    'Laranja': '#F26324',
+    'Azul': 'blue',
+    'Preta': '#000000',
+    'Preto': '#000000',
+    'Rosa': '#FFC0CB',
+    'Amarela': '#ffff00',
+    'Cinza': 'gray',
+    'Bege': '#f5f5dc'
 
+  };
+  const getColorHex = (colorName) => {
+    return colorMap[colorName] || '#FFFFFF'; // Se a cor não existir, use branco como padrão
+  };
   const addProduct = (product) => {
     dispatch(addCart(product))
   }
@@ -27,14 +43,29 @@ const Products = () => {
 
       const searchParams = new URLSearchParams(location.search);
       const category = searchParams.get('category');
+
       if (category !== null) {
         try {
           const response = await fetch("/mock-api/V1/categories/" + category);
-          if (componentMounted) {
-            setData(await response.clone().json());
-            setFilter(await response.json());
-            setLoading(false);
+          const productsData = await response.json();
+
+          const uniqueColors = new Set();
+          productsData.items.forEach((product) => {
+            product.filter.forEach((filter) => {
+              if (filter.color) {
+                uniqueColors.add(filter.color);
+              }
+            });
+          });
+
+          if (uniqueColors.size > 0) {
+            setColors([...uniqueColors]);
           }
+
+
+          setData(productsData);
+          setFilter(productsData);
+          setLoading(false);
         } catch (error) {
           console.error("Erro ao obter os produtos:", error);
           setLoading(false);
@@ -42,13 +73,10 @@ const Products = () => {
       } else {
         setLoading(true);
       }
-      return () => {
-        componentMounted = false;
-      };
     };
 
     getProducts();
-  }, []);
+  }, [location.search]);
 
   const Loading = () => {
     return (
@@ -78,16 +106,27 @@ const Products = () => {
     );
   };
 
-  const filterProduct = (cat) => {
-    const updatedList = data.filter((item) => item.category === cat);
-    setFilter(updatedList);
-  }
+  const filterProduct = (selectedColor) => {
+    if (selectedColor === currentFilter) {
+      setCurrentFilter(null);
+      setFilter(data);
+    } else {
+      setCurrentFilter(selectedColor);
+      const filteredItems = data.items.filter((item) => {
+        return item.filter.some((filter) => filter.color.toLowerCase() === selectedColor.toLowerCase());
+      });
+      setFilter({ filters: data.filters, items: filteredItems });
+    }
+  };
+
   const ShowProducts = () => {
 
     return (
+
       <>
-        <div className="buttons text-center py-2">
-          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => setFilter(data)}>Todos</button>
+        <h2 className="display-5 text-left red">Filtre por:</h2>
+        <h4 class="filter">CATEGORIAS</h4>
+        <div className="buttons text-left py-2">
           <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterProduct("men's clothing")}>Roupas</button>
           <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterProduct("women's clothing")}>
             Sapatos
@@ -103,11 +142,23 @@ const Products = () => {
           </button>
           <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterProduct("jewelery")}>Social</button>
         </div> */}
-        <div className="buttons text-center py-2">
-          <button className="color-filter btn" style={{ backgroundColor: '#CB0D1F', width: '50px', height: '50px', margin: '5px' }} onClick={() => filterProduct('#CB0D1F')}></button>
-          <button className="color-filter btn" style={{ backgroundColor: '#F26324', width: '50px', height: '50px', margin: '5px' }} onClick={() => filterProduct('#F26324')}></button>
-          <button className="color-filter btn" style={{ backgroundColor: '#27A3A9', width: '50px', height: '50px', margin: '5px' }} onClick={() => filterProduct('#27A3A9')}></button>
-        </div >
+        <div className="buttons text-left py-2">
+          {colors.map((color, index) => (
+            <button
+              key={index}
+              className="color-filter btn"
+              style={{
+                backgroundColor: getColorHex(color),
+                width: '50px',
+                height: '50px',
+                margin: '5px',
+              }}
+              onClick={() => filterProduct(color)}
+            ></button>
+          ))}
+        </div>
+
+
         <div className="dropdown text-right">
           <button className="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
             Ordenar Por
@@ -167,9 +218,9 @@ const Products = () => {
             </div>
           </div>
         ))}
-      
 
-        }
+
+
       </>
     );
   };
@@ -178,7 +229,7 @@ const Products = () => {
       <div className="container my-3 py-3">
         <div className="row">
           <div className="col-12">
-            <h2 className="display-5 text-left red">Produtos</h2>
+            <h2 className="display-5 text-center red">Produtos</h2>
             <hr />
           </div>
         </div>
@@ -186,6 +237,7 @@ const Products = () => {
           {loading ? <Loading /> : <ShowProducts />}
         </div>
       </div>
+
     </>
   );
 };
