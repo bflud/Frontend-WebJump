@@ -1,36 +1,31 @@
 # E-Commerce Website
 
-A Ecommerce Website made with React.js Framework.
-
+This E-commerce Website is a React.js-based project developed for the WebJump challenge.
 
 ## Demo
 
-https://reactjs-ecommerce-app.vercel.app/
+Check out a video demo of the application:
 
-## Features
+Soon*
 
-- Easy to integrate with Backend
-- Fully Responsive
+## Overview
 
-
-## Screenshots
-
-![App Screenshot](https://i.ibb.co/fQ293tm/image.png)
-
-
+This project aims to create a responsive and user-friendly e-commerce platform using React.js. It utilizes several key dependencies and tools for development and testing.
 
 ## Run Locally
 
-Clone the project
+Follow these steps to run the project locally:
+
+### Clone the repository
 
 ```bash
-  git clone https://github.com/ssahibsingh/React_E-Commerce
-```
+git clone https://github.com/bflud/Frontend-WebJump.git
+
 
 Go to the project directory
 
 ```bash
-  cd React_E-Commerce
+  cd my-app
 ```
 
 Install dependencies
@@ -45,23 +40,18 @@ Start the server
   npm start
 ```
 
+Dependencies
+This project relies on the following major dependencies:
 
-
-## Tech Stack
-
-* [React](https://reactjs.org/)
-* [Redux](https://redux.js.org/)
-* [Bootstrap](https://getbootstrap.com/)
-* [Fake Store API](https://fakestoreapi.com/)
-
-## Contributing
-
-Contributions are always welcome!
-Just raise an issue, we will discuss it.
-
-
-## Feedback
-
-If you have any feedback, please reach out to me [here](https://ssahibsingh.github.io/#contact)
-
-
+React: ^18.2.0
+React Router Dom: ^6.4.0
+Redux: ^4.2.0 along with React Redux and Redux Toolkit
+Bootstrap: ^5.2.1
+Font Awesome: ^4.7.0
+React Fast Marquee: ^1.3.5
+React Loading Skeleton: ^3.1.0
+Scripts
+npm start: Start the development server
+npm build: Build the production-ready application
+npm test: Run tests
+npm eject: Eject from Create React App's default configurations
