@@ -16,6 +16,7 @@ const Products = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const [colors, setColors] = useState([]);
+
   const colorMap = {
     'Vermelho': '#CB0D1F',
     'Laranja': '#F26324',
@@ -106,6 +107,53 @@ const Products = () => {
     );
   };
 
+  const hideColor =  () => {
+    var colorFilterElement = document.getElementById('colorFilter');
+    if (colorFilterElement) {
+      colorFilterElement.style.display = 'none';
+    } else {
+      console.log('Elemento colorFilter não encontrado.');
+    }
+  
+  }
+
+  
+  const fetchAllProducts = async () => {
+    setLoading(true);
+
+    try {
+
+      const response1 = await fetch("/mock-api/V1/categories/1");
+      const response2 = await fetch("/mock-api/V1/categories/2");
+
+      const productsData1 = await response1.json();
+      const productsData2 = await response2.json();
+
+      // Combina os dados de ambas as categorias
+      const allProductsData = {
+        filters: [...productsData1.filters, ...productsData2.filters],
+        items: [...productsData1.items, ...productsData2.items],
+        
+
+        // Escondendo o elemento
+
+
+      };
+
+      setData(allProductsData);
+      setFilter(allProductsData);
+      setTimeout(() => {
+        hideColor();
+        setLoading(false);
+      }, 100);
+      
+      setLoading(false);
+    } catch (error) {
+      console.error("Erro ao obter os produtos:", error);
+      setLoading(false);
+    }
+
+  };
   const filterProduct = (selectedColor) => {
     if (selectedColor === currentFilter) {
       setCurrentFilter(null);
@@ -119,19 +167,33 @@ const Products = () => {
     }
   };
 
+  const fetchShoesProducts = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch("/mock-api/V1/categories/3");
+      const productsData = await response.json();
+
+      setData(productsData);
+      setFilter(productsData);
+      setLoading(false);
+    } catch (error) {
+      console.error("Erro ao obter os produtos:", error);
+      setLoading(false);
+    }
+  };
+
   const ShowProducts = () => {
 
     return (
 
       <>
-        <h2 className="display-5 text-left red">Filtre por:</h2>
-        <h4 class="filter">CATEGORIAS</h4>
-        <div className="buttons text-left py-2">
-          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterProduct("men's clothing")}>Roupas</button>
-          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterProduct("women's clothing")}>
-            Sapatos
-          </button>
-          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterProduct("jewelery")}>Acessórios</button>
+        {/* <h2 className="display-5 text-center red">Filtre por:</h2> */}
+
+        <div className="buttons text-center py-2">
+          <h4 class="filter">CATEGORIAS</h4>
+          <button className="btn btn-outline-dark btn-sm m-2" onClick={fetchAllProducts}>Roupas</button>
+          <button className="btn btn-outline-dark btn-sm m-2" onClick={fetchShoesProducts}>Sapatos</button>
+          {/* <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterProduct("jewelery")}>Acessórios</button> */}
 
         </div >
         {/* <div className="buttons text-center py-1">
@@ -142,7 +204,8 @@ const Products = () => {
           </button>
           <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterProduct("jewelery")}>Social</button>
         </div> */}
-        <div className="buttons text-left py-2">
+        <div className="buttons text-center py-2" id="colorFilter">
+          <h4 class="filter">CORES</h4>
           {colors.map((color, index) => (
             <button
               key={index}
@@ -229,7 +292,7 @@ const Products = () => {
       <div className="container my-3 py-3">
         <div className="row">
           <div className="col-12">
-            <h2 className="display-5 text-center red">Produtos</h2>
+            <h2 className="display-5 text-left red">Produtos</h2>
             <hr />
           </div>
         </div>
