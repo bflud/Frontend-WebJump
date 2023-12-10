@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 const Navbar = () => {
     const [categories, setCategories] = useState([]);
-    const state = useSelector(state => state.handleCart);
 
     const handleClick = (categoryID) => {
         window.location.href = `/product?category=${categoryID}`;

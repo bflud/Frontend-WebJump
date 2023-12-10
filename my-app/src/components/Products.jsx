@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { addCart } from "../redux/action";
 import '../assets/style.css';
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -12,9 +10,9 @@ const Products = () => {
   const [filter, setFilter] = useState(data);
   const [loading, setLoading] = useState(false);
   const [currentFilter, setCurrentFilter] = useState(null);
-  let componentMounted = true;
+ 
   const location = useLocation();
-  const dispatch = useDispatch();
+
   const [colors, setColors] = useState([]);
 
   const colorMap = {
@@ -32,9 +30,7 @@ const Products = () => {
   const getColorHex = (colorName) => {
     return colorMap[colorName] || '#FFFFFF'; // Se a cor não existir, use branco como padrão
   };
-  const addProduct = (product) => {
-    dispatch(addCart(product))
-  }
+
 
 
 
@@ -47,7 +43,7 @@ const Products = () => {
 
       if (category !== null) {
         try {
-          if (category == 2) {
+          if (category === 2) {
             setTimeout(() => {
               hideColor();
               setLoading(false);
