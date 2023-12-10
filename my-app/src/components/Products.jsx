@@ -47,6 +47,13 @@ const Products = () => {
 
       if (category !== null) {
         try {
+          if (category == 2) {
+            setTimeout(() => {
+              hideColor();
+              setLoading(false);
+            }, 100);
+
+          }
           const response = await fetch("/mock-api/V1/categories/" + category);
           const productsData = await response.json();
 
@@ -107,17 +114,17 @@ const Products = () => {
     );
   };
 
-  const hideColor =  () => {
+  const hideColor = () => {
     var colorFilterElement = document.getElementById('colorFilter');
     if (colorFilterElement) {
       colorFilterElement.style.display = 'none';
     } else {
       console.log('Elemento colorFilter não encontrado.');
     }
-  
+
   }
 
-  
+
   const fetchAllProducts = async () => {
     setLoading(true);
 
@@ -133,7 +140,7 @@ const Products = () => {
       const allProductsData = {
         filters: [...productsData1.filters, ...productsData2.filters],
         items: [...productsData1.items, ...productsData2.items],
-        
+
 
         // Escondendo o elemento
 
@@ -207,13 +214,14 @@ const Products = () => {
         <div className="buttons text-center py-2" id="colorFilter">
           <h4 className="filter">CORES</h4>
           {colors.map((color, index) => (
+
             <button
               key={index}
               className="color-filter btn"
               style={{
                 backgroundColor: getColorHex(color),
-                width: '50px',
-                height: '50px',
+                width: '30px',
+                height: '30px',
                 margin: '5px',
               }}
               onClick={() => filterProduct(color)}
