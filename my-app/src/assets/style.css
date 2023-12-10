@@ -32,7 +32,7 @@ body {
 
 #navbarSupportedContent{
 
-  font-family: "Open Sans - Extrabold";
+  font-family: "Open Sans - Extrabold", sans-serif;
   font-size: 17px;
   font-weight: 600;
 }
