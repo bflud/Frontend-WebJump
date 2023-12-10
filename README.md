@@ -22,13 +22,14 @@ git clone https://github.com/bflud/Frontend-WebJump.git
 
 Go to the project directory
 
-```bash
-  cd my-app
-```
+
+
 
 Install dependencies
 
 ```bash
+  cd my-app
+  
   npm install
 ```
 
