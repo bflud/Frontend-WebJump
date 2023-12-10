@@ -10,11 +10,8 @@ const Products = () => {
   const [filter, setFilter] = useState(data);
   const [loading, setLoading] = useState(false);
   const [currentFilter, setCurrentFilter] = useState(null);
- 
   const location = useLocation();
-
   const [colors, setColors] = useState([]);
-
   const colorMap = {
     'Vermelho': '#CB0D1F',
     'Laranja': '#F26324',
@@ -28,7 +25,7 @@ const Products = () => {
 
   };
   const getColorHex = (colorName) => {
-    return colorMap[colorName] || '#FFFFFF'; // Se a cor não existir, use branco como padrão
+    return colorMap[colorName] || '#751CEC'; // Se a cor não existir,  roxo como padrão
   };
 
 
@@ -266,7 +263,7 @@ const Products = () => {
               </ul>
               <div className="card-body">
                 <Link
-                  to={"/product/" + product.id}
+                  to='{"/product/" + product.id}'
                   className="btn btn-dark m-1"
                   style={{
                     backgroundColor: '#00A8A9',
