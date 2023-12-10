@@ -25,7 +25,7 @@ const Products = () => {
 
   };
   const getColorHex = (colorName) => {
-    return colorMap[colorName] || '#751CEC'; // Se a cor não existir, use roxo como padrão
+    return colorMap[colorName] || '#751CEC'; // Se a cor não existir,  roxo como padrão
   };
 
 
