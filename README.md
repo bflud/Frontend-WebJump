@@ -4,9 +4,7 @@ This E-commerce Website is a React.js-based project developed for the WebJump ch
 
 ## Demo
 
-Check out a video demo of the application:
-
-Soon*
+![Imagem](https://i.pinimg.com/originals/c9/80/e3/c980e341ad33a3546e559c93cdc00d8c.png)
 
 ## Overview
 
@@ -24,13 +22,14 @@ git clone https://github.com/bflud/Frontend-WebJump.git
 
 Go to the project directory
 
-```bash
-  cd my-app
-```
+
+
 
 Install dependencies
 
 ```bash
+  cd my-app
+  
   npm install
 ```
 

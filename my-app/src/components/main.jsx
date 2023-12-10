@@ -28,7 +28,7 @@ const Home = () => {
             <div className="container">
               <h2 className="card-title fs-1 text fw-lighter">A Loja da Nova Geração!</h2>
               <p className="card-text fs-5 d-none d-sm-block ">
-                Conheça a revolução em compras! Bem-vindo à nossa loja, onde a inovação encontra a qualidade. Aqui, a experiência de compra é da nova geração. Descubra o que há de mais moderno e autêntico. Seja parte dessa evolução conosco!
+                Conheça a revolução em compras! Bem-vindo à nossa loja, onde a inovação encontra a qualidade. Aqui, a experiência de compra é da nova geração. Descubra o que há de mais moderno e autêntico. Seja parte dessa evolução conosco!🚀
               </p>
             </div>
           </div>
