@@ -4,7 +4,7 @@ This E-commerce Website is a React.js-based project developed for the WebJump ch
 
 ## Demo
 
-![Demo](assets/image.png)
+![Imagem](https://i.pinimg.com/originals/c9/80/e3/c980e341ad33a3546e559c93cdc00d8c.png)
 
 ## Overview
 
